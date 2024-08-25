@@ -1,0 +1,47 @@
+/* Add these styles to your main CSS file */
+
+.content {
+  margin-left: 250px;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.open+.content {
+  margin-left: 250px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    margin-left: 200px;
+  }
+
+  .sidebar.open+.content {
+    margin-left: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    margin-left: 150px;
+  }
+
+  .sidebar.open+.content {
+    margin-left: 150px;
+  }
+}
+
+/* Add these styles to your main CSS file */
+
+.content {
+  margin-left: 250px;
+  /* Space for sidebar on larger screens */
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+/* On smaller screens, adjust margin when sidebar is hidden */
+@media (max-width: 768px) {
+  .content {
+    margin-left: 0;
+  }
+}
