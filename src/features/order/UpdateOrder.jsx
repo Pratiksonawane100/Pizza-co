@@ -91,19 +91,19 @@ function UpdateOrder() {
   };
 
   return (
-    <div className="p-6 m-10 max-w-xl mx-auto bg-gray-800 text-white shadow-md rounded-md">
+    <div className="p-6 m-10 max-w-xl mx-auto bg-white text-gray-900 shadow-md rounded-md">
       <h2 className="text-2xl font-bold mb-6 text-center">Update Order</h2>
       <input
         type="text"
         placeholder="Search by Order ID"
         value={searchId}
         onChange={handleSearchChange}
-        className="w-full p-2 border border-gray-600 rounded-md mb-4 bg-gray-700 text-white"
+        className="w-full p-2 border border-gray-300 rounded-md mb-4 bg-gray-100 text-gray-900"
       />
       {error && <p className="text-red-500">{error}</p>}
       {order && (
         <>
-          <div className="mb-6 p-4 bg-gray-700 border border-gray-600 rounded-md">
+          <div className="mb-6 p-4 bg-gray-50 border border-gray-300 rounded-md">
             <p className="text-lg mb-2">Order ID: {order.orderId}</p>
             <p className="text-lg mb-2">Customer Name: {order.name}</p>
             <p className="text-lg mb-2">Delivery Address: {order.address}</p>
@@ -122,7 +122,7 @@ function UpdateOrder() {
                   <div className="ml-4 flex items-center">
                     <button
                       onClick={() => handleQuantityChange(item.pizzaId, -1)}
-                      className="px-2 py-1 bg-red-600 text-white rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                      className="px-2 py-1 bg-red-500 text-white rounded-md shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                       disabled={item.quantity <= 1}
                     >
                       -
@@ -130,7 +130,7 @@ function UpdateOrder() {
                     <span className="mx-2">{item.quantity}</span>
                     <button
                       onClick={() => handleQuantityChange(item.pizzaId, 1)}
-                      className="px-2 py-1 bg-green-600 text-white rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                      className="px-2 py-1 bg-green-500 text-white rounded-md shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                     >
                       +
                     </button>
@@ -140,7 +140,7 @@ function UpdateOrder() {
             </ul>
             <button
               onClick={handleMakePriority}
-              className="mt-4 py-2 px-4 bg-blue-600 text-white font-semibold rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="mt-4 py-2 px-4 bg-blue-500 text-white font-semibold rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               Make priority
             </button>

@@ -21,15 +21,23 @@ const CreateOrder = () => {
     e.preventDefault();
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const orderId = Math.random().toString(36).substring(2).toUpperCase(); // Example random ID
-    const deliveryTime = Math.random() < 0.5 ? "1 hour" : "40 minutes"; // Random delivery time
     const timestamp = new Date().toISOString(); // Current timestamp
+
+    // Random delivery time (20, 30, or 40 minutes)
+    const deliveryMinutes = [20, 30, 40];
+    const deliveryTime =
+      deliveryMinutes[Math.floor(Math.random() * deliveryMinutes.length)];
+    const deliveryDate = new Date(
+      new Date(timestamp).getTime() + deliveryTime * 60000
+    ).toISOString(); // Calculate delivery date
 
     // Retrieve existing orders and append the new order
     const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
     const newOrder = {
       ...formData,
       orderId,
-      deliveryTime,
+      deliveryTime: `${deliveryTime} minutes`,
+      deliveryDate,
       totalAmount: cart.reduce(
         (sum, item) => sum + item.quantity * item.unitPrice,
         0

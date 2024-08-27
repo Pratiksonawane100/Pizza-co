@@ -1,6 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "../css/Sidebar.css";
-import "../css/Layout.css";
 import Sidebar from "./Sidebar";
 import Error from "./Error";
 import Home from "../ui/Home";
@@ -46,9 +44,9 @@ const router = createBrowserRouter([
 
 function Applayout() {
   return (
-    <div className="app-layout">
+    <div className="flex min-h-screen bg-gray-100">
       <Sidebar />
-      <div className="content">
+      <div className="flex-1 lg:ml-64 p-4">
         <RouterProvider router={router} />
       </div>
     </div>

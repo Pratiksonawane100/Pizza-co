@@ -52,15 +52,17 @@ function StatusPage() {
 
   if (orders.length === 0) {
     return (
-      <p className="text-center text-lg text-gray-400">
+      <p className="text-center text-lg text-gray-500">
         No order details found.
       </p>
     );
   }
 
   return (
-    <div className="p-6 m-10 max-w-full mx-auto bg-gray-800 text-white shadow-md rounded-md">
-      <h2 className="text-2xl font-bold mb-6 text-center">Order Status</h2>
+    <div className="p-6 m-10 max-w-full mx-auto bg-white text-gray-900 shadow-md rounded-md">
+      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
+        Order Status
+      </h2>
       <div className="flex flex-wrap gap-6">
         {orders.map((order, index) => {
           const isNewOrder =
@@ -69,25 +71,34 @@ function StatusPage() {
           return (
             <div
               key={index}
-              className={`w-full sm:w-1/2 lg:w-1/2 mb-6 p-4 rounded-md ${
+              className={`w-full sm:w-1/2 lg:w-1/3 mb-6 p-4 rounded-md border ${
                 isNewOrder
-                  ? "bg-gray-700 border border-gray-600"
-                  : "bg-gray-700 border border-gray-600"
+                  ? "border-blue-300 bg-blue-50"
+                  : "border-gray-300 bg-gray-50"
               }`}
             >
               {order.isPriority && (
-                <div className="bg-green-500 text-white inline-block px-3 py-1 rounded-md font-bold mb-2">
+                <div className="bg-yellow-400 text-gray-900 inline-block px-3 py-1 rounded-md font-bold mb-2">
                   Priority
                 </div>
               )}
-              <p className="text-lg mb-2">Order ID: {order.orderId}</p>
+              <p className="text-lg mb-2 font-medium">
+                Order ID: {order.orderId}
+              </p>
               <p className="text-lg mb-2">Customer Name: {order.name}</p>
               <p className="text-lg mb-2">Delivery Address: {order.address}</p>
-              <p className="text-lg mb-2">
+              <p className="text-lg mb-2 font-medium">
                 Total Amount: ${order.totalAmount.toFixed(2)}
               </p>
               <p className="text-lg mb-2">
                 Estimated Delivery Time: {order.deliveryTime}
+              </p>
+              <p className="text-lg mb-2 text-gray-500">
+                Created At: {new Date(order.timestamp).toLocaleString()}
+              </p>
+              <p className="text-lg mb-2 text-gray-500">
+                Expected Delivery:{" "}
+                {new Date(order.deliveryDate).toLocaleString()}
               </p>
 
               <h3 className="text-xl font-semibold mt-6">Order Items:</h3>
@@ -98,7 +109,7 @@ function StatusPage() {
                       <img
                         src={images[item.name]}
                         alt={item.name}
-                        className="w-16 h-16 object-cover mr-4 rounded-md"
+                        className="w-16 h-16 object-cover mr-4 rounded-md border border-gray-300"
                       />
                     )}
                     {item.name} - Quantity: {item.quantity} - Total: $
@@ -110,7 +121,7 @@ function StatusPage() {
               <div className="flex justify-end mt-4">
                 <button
                   onClick={() => handleCancelOrder(order.orderId)}
-                  className=" py-2 px-4 bg-red-600 text-white font-semibold rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                  className="py-2 px-4 bg-red-500 text-white font-semibold rounded-md shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                 >
                   Cancel Order
                 </button>

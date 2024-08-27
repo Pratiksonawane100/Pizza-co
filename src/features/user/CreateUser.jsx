@@ -1,4 +1,3 @@
-// UsernameInput.jsx
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateName } from "./userSlice";
@@ -13,15 +12,15 @@ function CreateUser() {
     e.preventDefault();
     if (input.trim()) {
       dispatch(updateName(input));
-      navigate("/menu", { state: { usernameCreated: true } }); // Pass state
-    } else {
-      navigate("/menu", { state: { usernameCreated: false } }); // Pass state
+      navigate("/", { state: { usernameCreated: true } }); // Redirect to Home page with state
     }
   };
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-4 text-center">Create Username</h2>
+      <h2 className="text-2xl font-bold mb-4 text-center text-gray-400">
+        Create Username
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <input
@@ -29,7 +28,7 @@ function CreateUser() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Enter username"
-            className="w-full border border-gray-300 rounded-lg p-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-black-300 rounded-lg p-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
         <button
